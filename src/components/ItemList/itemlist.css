@@ -1,0 +1,14 @@
+.title {
+  padding: 8;
+}
+
+.additem {
+  margin-bottom: 8px;
+}
+
+.additem__form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
