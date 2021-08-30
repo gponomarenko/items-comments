@@ -6,23 +6,45 @@ import { ItemList } from './components/ItemList';
 import { CommentList } from './components/CommentList';
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      message: 'first message', id: 1,
-    }, {
-      message: 'second message', id: 2,
-    },
-  ]);
-  const [comments, setComments] = useState([
-    {
-      comment: 'first comment on message 1', itemId: 1, id: 1000,
-    }, {
-      comment: 'second comment on message 1', itemId: 1, id: 1001,
-    },
-    {
-      comment: 'first comment on message 2', itemId: 2, id: 1002,
-    },
-  ]);
+  function useLocalStorage(key, initialValue) {
+    const [storedValue, setStoredValue] = useState(() => {
+      try {
+        const item = window.localStorage.getItem(key);
+        return item ? JSON.parse(item) : initialValue;
+      } catch (error) {
+        console.log(error);
+        return initialValue;
+      }
+    });
+    const setValue = (value) => {
+      try {
+        const valueToStore
+        = value instanceof Function ? value(storedValue) : value;
+
+        setStoredValue(valueToStore);
+
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    return [storedValue, setValue];
+  }
+
+  const [items, setItems] = useLocalStorage('items', [{
+    message: 'first message', id: 1,
+  }, {
+    message: 'second message', id: 2,
+  }]);
+  const [comments, setComments] = useLocalStorage('comments', [{
+    comment: 'first comment on message 1', itemId: 1, id: 1000,
+  }, {
+    comment: 'second comment on message 1', itemId: 1, id: 1001,
+  },
+  {
+    comment: 'first comment on message 2', itemId: 2, id: 1002,
+  }]);
   const [activeItemId, setActiveItemId] = useState(0);
   const [inputItem, setInputItem] = useState('');
   const [inputComment, setInputComment] = useState('');
@@ -30,6 +52,8 @@ function App() {
   const selectItem = (itemId) => {
     setActiveItemId(itemId);
   };
+
+
 
   const addItem = (event) => {
     event.preventDefault();
@@ -64,9 +88,9 @@ function App() {
     console.log('adding item');
   };
 
-  const findItemPlace = (id) => (
+  const findItemPlace = id => (
     items
-      .indexOf(items.find(item => item.id === activeItemId))
+      .indexOf(items.find(item => item.id === id))
   );
 
   const deleteItem = (id) => {
