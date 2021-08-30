@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { ItemList } from './components/ItemList';
 import { CommentList } from './components/CommentList';
 
@@ -150,6 +150,16 @@ function App() {
       <div className="App__sidebar container bg-dark">
         <h1 className="App__sidebar--title text-white">DAIRY APP</h1>
         <p className="text-white-50">Comments with no sense</p>
+        <div>
+          <Route path="/">
+            <Link to="/">
+            <button type="button" className="btn btn-light">
+              GO HOME
+            </button>
+            </Link>
+          </Route>
+
+        </div>
       </div>
       <div className="App__main container-fluid">
         <div className="App__items shadow p-3 mb-5 bg-white">
