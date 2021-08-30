@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-console */
 import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,9 +12,11 @@ function App() {
     const [storedValue, setStoredValue] = useState(() => {
       try {
         const item = window.localStorage.getItem(key);
+
         return item ? JSON.parse(item) : initialValue;
       } catch (error) {
         console.log(error);
+
         return initialValue;
       }
     });
@@ -53,8 +57,6 @@ function App() {
     setActiveItemId(itemId);
   };
 
-
-
   const addItem = (event) => {
     event.preventDefault();
     if (!inputItem.length) {
@@ -85,7 +87,6 @@ function App() {
 
     setInputItem('');
     setActiveItemId(0);
-    console.log('adding item');
   };
 
   const findItemPlace = id => (
@@ -96,7 +97,6 @@ function App() {
   const deleteItem = (id) => {
     setComments(prev => prev.filter(comment => comment.itemId !== id));
     setItems(prev => prev.filter(item => item.id !== id));
-    console.log(items, comments);
   };
 
   const addComment = (event) => {
@@ -115,7 +115,6 @@ function App() {
             },
           ]
         ));
-        console.log('adding next comment');
       }
 
       if (!comments.length) {
@@ -128,7 +127,6 @@ function App() {
             },
           ]
         ));
-        console.log('adding first comment');
       }
 
       setInputComment('');
@@ -153,9 +151,9 @@ function App() {
         <div>
           <Route path="/items-comments">
             <Link to="/items-comments">
-            <button type="button" className="btn btn-light">
-              GO HOME
-            </button>
+              <button type="button" className="btn btn-light">
+                GO HOME
+              </button>
             </Link>
           </Route>
 

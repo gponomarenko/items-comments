@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './item.css';
 
@@ -35,3 +36,11 @@ export const Item = ({
     </button>
   </li>
 );
+
+Item.propTypes = {
+  id: PropTypes.number.isRequired,
+  message: PropTypes.string.isRequired,
+  selectItem: PropTypes.func.isRequired,
+  deleteItem: PropTypes.func.isRequired,
+  showCommentsNumber: PropTypes.func.isRequired,
+};

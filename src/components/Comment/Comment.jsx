@@ -1,6 +1,7 @@
 import React from 'react';
 import './comment.css';
 import cn from 'classnames';
+import PropTypes from 'prop-types';
 
 export const Comment = ({ message, index }) => (
   <>
@@ -26,3 +27,8 @@ export const Comment = ({ message, index }) => (
     </li>
   </>
 );
+
+Comment.propTypes = {
+  message: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Comment } from '../Comment';
 import '../Comment/comment.css';
 
@@ -48,3 +49,12 @@ export const CommentList = ({
     </div>
   </>
 );
+
+CommentList.propTypes = {
+  comments: PropTypes.arrayOf(PropTypes.objectOf.isRequired).isRequired,
+  addComment: PropTypes.func.isRequired,
+  activeItemId: PropTypes.number.isRequired,
+  inputComment: PropTypes.string.isRequired,
+  setInputComment: PropTypes.func.isRequired,
+  findItemPlace: PropTypes.func.isRequired,
+};
