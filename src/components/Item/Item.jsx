@@ -18,7 +18,7 @@ export const Item = ({
   >
     <Link
       className="item__link"
-      to={`/${id}`}
+      to={`/items-comments/${id}`}
       onClick={() => selectItem(id)}
     >
       {`${message} `}

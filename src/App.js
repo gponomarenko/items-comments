@@ -151,8 +151,8 @@ function App() {
         <h1 className="App__sidebar--title text-white">DAIRY APP</h1>
         <p className="text-white-50">Comments with no sense</p>
         <div>
-          <Route path="/">
-            <Link to="/">
+          <Route path="/items-comments">
+            <Link to="/items-comments">
             <button type="button" className="btn btn-light">
               GO HOME
             </button>
@@ -176,7 +176,7 @@ function App() {
           </div>
         </div>
         <div className="App__comments shadow p-3 mb-5 bg-white">
-          <Route path={`/${activeItemId}`}>
+          <Route path={`/items-comments/${activeItemId}`}>
             <CommentList
               comments={comments}
               addComment={addComment}
