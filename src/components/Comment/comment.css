@@ -3,22 +3,45 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding: 8px;
-  border: 1px solid rgb(233, 62, 62);
+  color: #000;
+  border-color: transparent;
 }
 
 .comment__status {
   display: flex;
   flex-basis: 100px;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
-  border: 1px solid #000;
   margin-right: 8px;
-  padding: 8px;
+}
+
+.comment__body {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.comment__input {
+  width: 100%;
+  outline: none;
+  resize: none;
 }
 
 .comment__box {
-  width: 80px;
-  height: 80px;
-  border: 1px solid #000;
-  background-color: greenyellow;
+  width: 40px;
+  height: 40px;
+}
+
+.comment__box--odd {
+  background-color: orange;
+}
+
+.comment__box--even {
+  background-color: navy;
+}
+
+.comment__box--add {
+  background-color: lightgray;
+
 }

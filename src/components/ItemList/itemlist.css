@@ -1,14 +1,17 @@
-.title {
-  padding: 8;
-}
-
 .additem {
-  margin-bottom: 8px;
-}
-
-.additem__form {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 8px;
+  align-items: baseline;
+}
+
+.form__container {
+  padding: 0 1rem;
+}
+
+.form__input {
+  margin-bottom: 1rem;
+}
+
+.itemlist {
+  position: relative;
 }
